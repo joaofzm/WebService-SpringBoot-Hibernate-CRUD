@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="user_table")
@@ -28,6 +30,9 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 	
+	//Avoid infinity loop
+	//Lazy loading
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> listOfOrders = new ArrayList<>();
 
