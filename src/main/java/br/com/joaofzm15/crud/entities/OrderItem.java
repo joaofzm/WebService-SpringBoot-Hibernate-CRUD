@@ -67,6 +67,15 @@ public class OrderItem implements Serializable{
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	public Double subTotal() {
+		return price * quantity;
+	}
+	
+	//Must be a get so JPA understands
+	public Double getSubTotal() {
+		return subTotal();
+	}
 
 	@Override
 	public int hashCode() {
